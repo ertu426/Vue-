@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>回顾Object.defineProperty方法</title>
+</head>
+<body>
+  <script>
+    let number = 18
+    let person = {
+      name: 'jack',
+      sex: '男'
+    }
+
+    Object.defineProperty(person, 'age', {
+      // value: 18,
+      // enumerable: true,  // 控制属性是否可以枚举，默认值是 false
+      // writable: true,    // 控制属性是否可以被修改，默认值是 false
+      // configurable: true,// 控制属性是否可以被删除，默认值是 false
+
+      // 当有人读取person的 age属性时，会触发getter方法，返回的值会作为age属性的值。
+      get() {
+        console.log('getter方法被调用')
+        return number
+      },
+
+      // 当有人设置person的 age属性时，会触发setter方法，传入的值会作为age属性的值。
+      set(value) {
+        console.log('setter方法被调用')
+        number = value
+      }
+    })
+    console.log(person)
+  </script>
+</body>
+</html>
