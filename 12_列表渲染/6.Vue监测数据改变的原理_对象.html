@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue监测数据改变的原理_对象</title>
+  <script src="../JS/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>学校名称: {{ name }}</h2>
+    <h2>学校地址: {{ address }}</h2>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          name: '北京大学',
+          address: '北京市海淀区'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

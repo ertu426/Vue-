@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模拟数据监测</title>
+</head>
+<body>
+  <script>
+    let data = {
+      name: '北京大学',
+      address: '北京市海淀区',
+      student: {
+        name: '张三',
+        age: {
+          rAge: 40,
+          sAge: 29
+        },
+        friends: [
+          { name: 'top', age: 18 },
+          { name: '小明', age: 20 },
+          { name: '小红', age: 21 }
+        ]
+      }
+    }
+
+    let obs = new Observer(data)
+
+
+    let vm = {}
+    vm._data = data = obs
+
+    function Observer(obj) {
+      // 汇总所有的属性
+      let keys = Object.keys(obj)
+      // 遍历
+      keys.forEach((k) => {
+        Object.defineProperty(this, k, {
+          get() {
+            return obj[k]
+          },
+          set(val) {
+            obj[k] = val
+            console.log(`${k} 变化了`)
+          }
+        })
+      });
+    }
+
+  </script>
+</body>
+</html>

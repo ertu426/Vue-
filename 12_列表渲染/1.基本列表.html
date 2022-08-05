@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>列表渲染</title>
+  <script src="../JS/vue.js"></script>
+</head>
+<body>
+  <!-- 
+    v-for指令：
+      1.用于展示列表数据
+      2.语法：v-for="(item,index)in xxx" :key="yyy"
+      3.可遍历：数组、对象、字符串（用的很少）、指定次数（用的很少）
+   -->
+
+  <div id="app">
+    <!-- 遍历数组 -->
+    <h2>人员列表(遍历数组)</h2>
+    <ul>
+      <li v-for="(p, index) of persons" :key="index">
+        {{p.name}}-{{p.age}}
+      </li>
+    </ul>
+
+    <!-- 遍历对象 -->
+    <h2>汽车信息(遍历对象)</h2>
+    <ul>
+      <li v-for="(v, k) of car" :key="k">
+        {{k}} -- {{v}}
+      </li>
+    </ul>
+
+    <!-- 遍历字符串 -->
+    <h2>字符串(用的少)</h2>
+    <ul>
+      <li v-for="(c, i) of str" :key="i">
+        {{i}} -- {{c}}
+      </li>
+    </ul>
+
+    <!-- 遍历指定次数 -->
+    <h2>指定次数(用的少)</h2>
+    <ul>
+      <li v-for="(number, index) of 5" :key="index">
+        {{index}} -- {{number}}
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          persons: [
+            {
+              id: 1,
+              name: '张三',
+              age: 18
+            },
+            {
+              id: 2,
+              name: '李四',
+              age: 20
+            },
+            {
+              id: 3,
+              name: '王五',
+              age: 22
+            },
+            {
+              id: 4,
+              name: '赵六',
+              age: 24
+            }
+          ],
+          car: {
+            name: 'BMW',
+            price: '$100000',
+            color: 'red',
+            year: '2018',
+            type: 'SUV',
+            brand: '宝马',
+            model: 'X5',
+            gearbox: '手自动',
+            fuel: '汽油',
+            displacement: '2.0L',
+            speed: '180km/h',
+            warranty: '三年',
+            owner: '张三',
+            owner_phone: '13888888888',
+            owner_address: '北京市朝阳区',
+            owner_email: 'xxx@xxx.xx'
+          },
+          str: 'hello world'
+        }
+      }
+    })
+  </script>
+</body>
+</html>
